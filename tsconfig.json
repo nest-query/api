@@ -27,7 +27,7 @@
     "experimentalDecorators": true,
     "sourceMap": false,
     "outDir": "./dist",
-    "rootDir": ".",
+    "rootDir": "./src",
     "skipLibCheck": true
   },
   "include": ["src/**/*", "./__tests__"],
