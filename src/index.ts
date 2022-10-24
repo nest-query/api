@@ -2,6 +2,7 @@
 export * from './interfaces';
 export * from './common';
 export * from './decorators';
+export * from './connection';
 
 export {
   QueryRepository,
