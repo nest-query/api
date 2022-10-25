@@ -14,6 +14,8 @@ import {
   GetByIdOptions,
   UpdateOneOptions,
   DeleteOneOptions,
+  CursorResult,
+  CursorPagingOptions,
 } from '../interfaces';
 
 /**
@@ -22,6 +24,13 @@ import {
  * @typeparam T - The record type that the query repository will operate on.
  */
 export interface QueryRepository<DTO, C = DeepPartial<DTO>, U = DeepPartial<DTO>> {
+  /**
+   * @param context 
+   * @param query 
+   * @param opts
+   */
+  cursorPaging(context: IContext, query: Query<DTO>, opts?: CursorPagingOptions<DTO>): Promise<CursorResult<DTO>>;
+
   /**
    * 查找多条记录 `T`.
    * @param query - the query used to filter, page or sort records.

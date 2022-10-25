@@ -1,5 +1,5 @@
 import { Class, DeepPartial, MapReflector, MetaValue, ValueReflector } from '../common';
-import { AggregateQuery, AggregateResponse, Query } from '../interfaces';
+import { AggregateQuery, AggregateResponse, CursorPagingOptions, Query } from '../interfaces';
 import { MAPPER_CLASSES_KEY, MAPPER_KEY } from './constants';
 
 export interface Mapper<
@@ -27,6 +27,12 @@ export interface Mapper<
    * @param query - the query to convert.
    */
   convertQuery(query: Query<DTO>): Query<Entity>;
+
+  /**
+   * 
+   * @param opts 
+   */
+  convertCursorPagingOptions(opts: CursorPagingOptions<DTO>): CursorPagingOptions<Entity>;
 
   /**
    * Convert a DTO query to an entity query.

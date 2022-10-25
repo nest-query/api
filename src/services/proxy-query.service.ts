@@ -13,6 +13,8 @@ import {
   UpdateManyResponse,
   UpdateOneOptions,
   IContext,
+  CursorResult,
+  CursorPagingOptions,
 } from '../interfaces';
 import { QueryService } from './query.service';
 import { QueryRepository } from '../repositories';
@@ -207,6 +209,10 @@ export class ProxyQueryService<DTO, C = DeepPartial<DTO>, U = DeepPartial<DTO>> 
 
   getById(context: IContext, id: string | number, opts?: GetByIdOptions<DTO>): Promise<DTO> {
     return this.proxied.getById(context, id, opts);
+  }
+
+  cursorPaging(context: IContext, query: Query<DTO>, opts?: CursorPagingOptions<DTO>): Promise<CursorResult<DTO>> {
+    return this.proxied.cursorPaging(context, query, opts);
   }
 
   query(context: IContext, query: Query<DTO>): Promise<DTO[]> {

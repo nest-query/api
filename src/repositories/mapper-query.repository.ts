@@ -15,6 +15,8 @@ import {
   UpdateManyResponse,
   UpdateOneOptions,
   IContext,
+  CursorResult,
+  CursorPagingOptions,
 } from '../interfaces';
 import { QueryRepository } from './query.repository';
 
@@ -72,6 +74,16 @@ export class MapperQueryRepository<DTO, Entity, C = DeepPartial<DTO>, CE = DeepP
 
   query(context: IContext, query: Query<DTO>): Promise<DTO[]> {
     return this.mapper.convertAsyncToDTOs(this.queryRepository.query(context, this.mapper.convertQuery(query)));
+  }
+
+  async cursorPaging(context: IContext, query: Query<DTO>, opts?: CursorPagingOptions<DTO>): Promise<CursorResult<DTO>> {
+    const _opts = opts ? this.mapper.convertCursorPagingOptions(opts) : undefined;
+    const cursorResult = await this.queryRepository.cursorPaging(context, this.mapper.convertQuery(query), _opts);
+
+    return {
+      pageInfo: cursorResult.pageInfo,
+      data: this.mapper.convertToDTOs(cursorResult.data),
+    };
   }
 
   async queryOne(context: IContext, filter: Filter<DTO>): Promise<DTO | undefined> {
