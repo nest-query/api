@@ -34,8 +34,3 @@ export interface CursorResult<T> {
   pageInfo: CursorPageInfo;
   data: T[];
 }
-
-export interface CursorPagingOptions<Entity> { 
-  paginationKeys?: Extract<keyof Entity, string>[];
-  paginationUniqueKey?: Extract<keyof Entity, string>;  
-}

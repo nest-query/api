@@ -1,6 +1,6 @@
 {
   "name": "@nest-query/api",
-  "version": "0.41.0",
+  "version": "0.42.0",
   "description": "Base query package",
   "author": "dev <dev@growingbox.cn>",
   "homepage": "https://github.com/newtalentxp/nest-query-api#readme",

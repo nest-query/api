@@ -15,7 +15,6 @@ import {
   UpdateOneOptions,
   DeleteOneOptions,
   CursorResult,
-  CursorPagingOptions,
 } from '../interfaces';
 
 /**
@@ -29,7 +28,7 @@ export interface QueryRepository<DTO, C = DeepPartial<DTO>, U = DeepPartial<DTO>
    * @param query 
    * @param opts
    */
-  cursorPaging(context: IContext, query: Query<DTO>, opts?: CursorPagingOptions<DTO>): Promise<CursorResult<DTO>>;
+  cursorPaging(context: IContext, query: Query<DTO>): Promise<CursorResult<DTO>>;
 
   /**
    * 查找多条记录 `T`.

@@ -14,7 +14,6 @@ import {
   UpdateOneOptions,
   IContext,
   CursorResult,
-  CursorPagingOptions,
 } from '../interfaces';
 import { QueryRepository } from './query.repository';
 
@@ -210,8 +209,8 @@ export class ProxyQueryRepository<DTO, C = DeepPartial<DTO>, U = DeepPartial<DTO
     return this.proxied.getById(context, id, opts);
   }
 
-  cursorPaging(context: IContext, query: Query<DTO>, opts?: CursorPagingOptions<DTO>): Promise<CursorResult<DTO>> {
-    return this.proxied.cursorPaging(context, query, opts);
+  cursorPaging(context: IContext, query: Query<DTO>): Promise<CursorResult<DTO>> {
+    return this.proxied.cursorPaging(context, query);
   }
 
   query(context: IContext, query: Query<DTO>): Promise<DTO[]> {

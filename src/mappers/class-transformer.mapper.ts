@@ -1,5 +1,5 @@
 import { plainToClass } from 'class-transformer';
-import { AggregateQuery, AggregateResponse, CursorPagingOptions, Query } from '../interfaces';
+import { AggregateQuery, AggregateResponse, Query } from '../interfaces';
 import { AbstractMapper } from './abstract.mapper';
 import { Class, DeepPartial } from '../common';
 import { getMapperSerializer } from './mapper.serializer';
@@ -26,10 +26,6 @@ export abstract class ClassTransformerMapper<DTO, Entity> extends AbstractMapper
 
   convertQuery(query: Query<DTO>): Query<Entity> {
     return query as unknown as Query<Entity>;
-  }
-
-  convertCursorPagingOptions(opts: CursorPagingOptions<DTO>): CursorPagingOptions<Entity> {
-    return opts as unknown as CursorPagingOptions<Entity>;
   }
 
   convertAggregateQuery(aggregate: AggregateQuery<DTO>): AggregateQuery<Entity> {

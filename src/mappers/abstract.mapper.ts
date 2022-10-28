@@ -1,5 +1,5 @@
 import { Class, DeepPartial } from '../common';
-import { AggregateQuery, Query, AggregateResponse, CursorPagingOptions } from '../interfaces';
+import { AggregateQuery, Query, AggregateResponse } from '../interfaces';
 import { Mapper, getMapperClasses } from './mapper';
 
 /**
@@ -39,8 +39,6 @@ export abstract class AbstractMapper<DTO, Entity, C = DeepPartial<DTO>, CE = Dee
   abstract convertToEntity(dto: DTO): Entity;
 
   abstract convertQuery(query: Query<DTO>): Query<Entity>;
-
-  abstract convertCursorPagingOptions(opts: CursorPagingOptions<DTO>): CursorPagingOptions<Entity>;
 
   abstract convertAggregateQuery(aggregate: AggregateQuery<DTO>): AggregateQuery<Entity>;
 
